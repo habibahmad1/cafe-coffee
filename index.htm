@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Agbalumo&display=swap" rel="stylesheet" />
     <!-- Font End -->
 
+    <!-- AOS Pluigin -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- AOS Pluigin End -->
+
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     <!-- Feather Icons End-->
@@ -77,8 +81,8 @@
     <!-- Hero section -->
     <section class="hero" id="home">
       <main class="content">
-        <h1>Cafe Coffe Tempatnya <span>Ngopi</span></h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos, at!</p>
+        <h1 class="teks-hero">Cafe Coffe Tempatnya <span>Ngopi</span></h1>
+        <p class="slogan"></p>
         <a href="#" class="cta">Gaskeun!</a>
       </main>
     </section>
@@ -89,9 +93,9 @@
       <h2><span>Tentang </span>Kami</h2>
       <div class="row">
         <div class="about-img">
-          <img src="./img/tentang-kami.jpg" alt="tentang kami" />
+          <img src="./img/tentang-kami.jpg" alt="tentang kami" data-aos="fade-right" />
         </div>
-        <div class="content">
+        <div class="content" data-aos="fade-left" data-aos-delay="200">
           <h3>Kenapa di <span>Cafe Coffee</span> ?</h3>
           <p>
             Kami adalah tim yang penuh semangat dan berpengalaman dalam seni kopi. Setiap anggota staf kami dilatih untuk menghadirkan kopi terbaik untuk Anda, baik itu espresso yang kaya dan kuat, cappuccino yang lembut dengan buih yang
@@ -113,27 +117,27 @@
       <p>Ini merupakan beberapa menu kami yang tersedia, Silahkan kamu dapat memilihnya beberapa menu kopi yang nikmat</p>
 
       <div class="row">
-        <div class="menu-card">
+        <div class="menu-card" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="100">
           <img src="./img/menus/Americano.jpg" alt="Americano" class="menu-img" />
           <h3 class="menu-title">Americano</h3>
           <p class="menu-price">Rp 20.000</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="200">
           <img src="./img/menus/Cappuccino.jpg" alt="Cappuccino" class="menu-img" />
           <h3 class="menu-title">Cappuccino</h3>
           <p class="menu-price">Rp 25.000</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="300">
           <img src="./img/menus/Espresso.jpg" alt="Espresso" class="menu-img" />
           <h3 class="menu-title">Espresso</h3>
           <p class="menu-price">Rp 15.000</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="400">
           <img src="./img/menus/Iced Coffee.jpg" alt="Iced Coffee" class="menu-img" />
           <h3 class="menu-title">Iced Coffee</h3>
           <p class="menu-price">Rp 20.000</p>
         </div>
-        <div class="menu-card">
+        <div class="menu-card" data-aos="zoom-out" data-aos-duration="1000" data-aos-delay="500">
           <img src="./img/menus/Vanilla Latte.jpg" alt="Vanilla Latte" class="menu-img" />
           <h3 class="menu-title">Vanilla Latte</h3>
           <p class="menu-price">Rp 30.000</p>
@@ -259,7 +263,7 @@
     <!-- Member Price End -->
 
     <!-- Contact -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" data-aos="fade-up-right">
       <h2><span>Kontak </span>Kami</h2>
       <p>Jangan ragu untuk menghubungi kami dengan pertanyaan, masukan, atau kerjasama. Kami siap mendengarkan Anda dan menjawab setiap kebutuhan Anda.</p>
 
@@ -341,6 +345,51 @@
       feather.replace();
     </script>
     <!-- Feather Icons End -->
+
+    <!-- AOS Pluigin -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      // Membership animation
+      const membeship = document.querySelectorAll(".membership-paket");
+
+      membeship.forEach((paket, i) => {
+        paket.dataset.aos = "flip-left";
+        paket.dataset.aosDelay = i * 100;
+        paket.dataset.aosDUration = 1500;
+      });
+
+      // Product Animation
+      const product = document.querySelectorAll(".product-card");
+
+      product.forEach((product, i) => {
+        product.dataset.aos = "fade-up";
+        product.dataset.aosDelay = i * 100;
+        product.dataset.aosDUration = 1500;
+      });
+
+      AOS.init({
+        once: true,
+        duration: 2000,
+      });
+    </script>
+    <!-- AOS Pluigin End -->
+
+    <!-- GSAP Pluigin -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script>
+      //Type Pluigin
+      gsap.registerPlugin(TextPlugin);
+      gsap.to(".slogan", {
+        duration: 3,
+        delay: 2,
+        text: "Nikmati Kopi Terbaik, Setiap Hidangan adalah Petualangan Baru!",
+      });
+      // Animation
+      gsap.from(".teks-hero", { duration: 1, x: "-100%", opacity: 0, ease: "back" });
+      gsap.from(".cta", { duration: 1, y: -100, opacity: 0, delay: 0.5, ease: "bounce" });
+    </script>
+    <!-- GSAP Pluigin End -->
 
     <!-- My JS -->
     <script src="./js/script.js"></script>
